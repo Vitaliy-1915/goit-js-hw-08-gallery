@@ -33,7 +33,9 @@ containerGalleryImages.addEventListener('click', onClickGalleryImageOpenModal);
 
 function onClickGalleryImageOpenModal(event) {
     event.preventDefault();
-    
+
+    closeLightboxBtnEl.addEventListener('click', onClickCloseModal);
+    lightboxOverlay.addEventListener('click', onClickCloseModal);
     window.addEventListener('keydown', onClickEscCloseModal);
    
     if (event.target.nodeName !== 'IMG') {
@@ -43,22 +45,14 @@ function onClickGalleryImageOpenModal(event) {
     modalImageEl.alt = event.target.alt;
 }
 
-closeLightboxBtnEl.addEventListener('click', onClickBtnCloseModal);
-
-function onClickBtnCloseModal(event) {
+function onClickCloseModal(event) {
+    closeLightboxBtnEl.removeEventListener('click', onClickCloseModal);
+    lightboxOverlay.removeEventListener('click', onClickCloseModal);
     window.removeEventListener('keydown', onClickEscCloseModal);
 
     containerModal.classList.remove('is-open');
     modalImageEl.src = '';
     modalImageEl.alt = '';
-}
-    
-lightboxOverlay.addEventListener('click', onClickOverlayCloseModal);
-
-function onClickOverlayCloseModal(event) {
-    if (event.target) {
-        containerModal.classList.remove('is-open');
-     }
 }
 
 function onClickEscCloseModal(event) {
