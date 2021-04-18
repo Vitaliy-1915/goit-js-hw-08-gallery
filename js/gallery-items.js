@@ -37,8 +37,6 @@ function onClickGalleryImageOpenModal(event) {
     closeLightboxBtnEl.addEventListener('click', onClickCloseModal);
     lightboxOverlay.addEventListener('click', onClickCloseModal);
     window.addEventListener('keydown', onClickEscCloseModal);
-
-    closeLightboxBtnEl.textContent = 'X';
    
     if (event.target.nodeName !== 'IMG') {
         return
