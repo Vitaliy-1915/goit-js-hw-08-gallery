@@ -57,7 +57,7 @@ function onClickCloseModal(event) {
 
 function onClickEscCloseModal(event) {
     if (event.code === 'Escape') {
-       containerModal.classList.remove('is-open'); 
+       onClickCloseModal(); 
     }
 }
 
